@@ -6,6 +6,10 @@ void main() {
   int choice = 0;
   int jenisBarang = 0;
   int pilihanJenisBarang = 0;
+  int n = 0;
+  int batasHargaBawah = 0;
+  int batasHargaAtas = 0;
+  int lokasi = 0;
   List<Product> inventory = [];
   List<BukuBiasa> inventoryBukuBiasa = [];
   List<BukuTravelGuide> inventoryBukuTravelGuide = [];
@@ -102,13 +106,9 @@ void main() {
       String? displayJenisBarang = stdin.readLineSync();
       pilihanJenisBarang = int.parse(displayJenisBarang!);
       if (pilihanJenisBarang == 1) {
-        print(" ");
-        print('ID: ${bukuBiasa.id}');
-        print('Judul: ${bukuBiasa.judul}');
-        print('Deskripsi: ${bukuBiasa.nama}');
-        print('Harga: ${bukuBiasa.harga}');
-        print('ISBN: ${bukuBiasa.isbn}');
-        print('Penulis: ${bukuBiasa.penulis}');
+        for (var n in inventoryBukuBiasa) {
+          bukuBiasa.printBukuBiasa();
+        }
       } else if (pilihanJenisBarang == 2) {
         print(" ");
         print('ID: ${bukuTravelGuide.id}');
@@ -127,6 +127,10 @@ void main() {
         print('Artist: ${cd.artist}');
       }
     } else if (choice == 3) {
+      print(' ');
+      stdout.write('Ketik suatu nomor lokasi untuk meletakkan barang: ');
+      String? letakBarang = stdin.readLineSync();
+      lokasi = int.parse(letakBarang!);
     } else if (choice == 4) {
       print(" ");
       bukuBiasa.book();
@@ -157,8 +161,44 @@ void main() {
     } else if (choice == 5) {
       print(" ");
       stdout.write('N-data barang pertama: ');
+      String? inputN = stdin.readLineSync();
+      n = int.parse(inputN!);
       stdout.write('Batasan harga (bawah): ');
+      String? inputBatasHargaBawah = stdin.readLineSync();
+      batasHargaBawah = int.parse(inputBatasHargaBawah!);
       stdout.write('Batasan harga (atas): ');
+      String? inputBatasHargaAtas = stdin.readLineSync();
+      batasHargaAtas = int.parse(inputBatasHargaAtas!);
+      if (product.harga >= batasHargaBawah && product.harga <= batasHargaAtas) {
+        for (int i = 1; i <= n; i++) {
+          print(" ");
+          bukuBiasa.book();
+          print('ID: ${bukuBiasa.id}');
+          print('Judul: ${bukuBiasa.judul}');
+          print('Deskripsi: ${bukuBiasa.nama}');
+          print('Harga: ${bukuBiasa.harga}');
+          print('ISBN: ${bukuBiasa.isbn}');
+          print('Penulis: ${bukuBiasa.penulis}');
+
+          print(" ");
+          bukuTravelGuide.travelGuide();
+          print('ID: ${bukuTravelGuide.id}');
+          print('Judul: ${bukuTravelGuide.judul}');
+          print('Deskripsi: ${bukuTravelGuide.nama}');
+          print('Harga: ${bukuTravelGuide.harga}');
+          print('ISBN: ${bukuTravelGuide.isbn}');
+          print('Penulis: ${bukuTravelGuide.penulis}');
+          print('Negara: ${bukuTravelGuide.negara}');
+
+          print(" ");
+          cd.compactDisc();
+          print('ID: ${cd.id}');
+          print('Judul: ${cd.judul}');
+          print('Deskripsi: ${cd.nama}');
+          print('Harga: ${cd.harga}');
+          print('Artist: ${cd.artist}');
+        }
+      }
     } else if (choice == 6) {
       print(" ");
       stdout

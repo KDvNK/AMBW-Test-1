@@ -11,6 +11,16 @@ class BukuBiasa extends Product with Object {
     this.isbn = isbn;
     this.penulis = penulis;
   }
+
+  void printBukuBiasa() {
+    print(" ");
+    print('ID: $id');
+    print('Judul: ${judul}');
+    print('Deskripsi: ${nama}');
+    print('Harga: ${harga}');
+    print('ISBN: ${isbn}');
+    print('Penulis: ${penulis}');
+  }
 }
 
 class BukuTravelGuide extends Product with Object {
